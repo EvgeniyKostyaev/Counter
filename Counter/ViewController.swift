@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var minusButton: UIButton!
     
+    @IBOutlet weak var knockButton: UIButton!
+    
     private var count: Int = 0
     
     override func viewDidLoad() {
@@ -39,6 +41,12 @@ class ViewController: UIViewController {
             
             updateCounterValueLabel()
         }
+    }
+    
+    @IBAction func onClickKnockButton(_ sender: Any) {
+        count = 0
+        
+        updateCounterValueLabel()
     }
 }
 
