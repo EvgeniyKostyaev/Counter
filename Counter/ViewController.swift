@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     private func updateHistoryTextView(event: String) {
-        historyTextView.text.append("[дата и время]: \(event)\n")
+        historyTextView.text.append("[\(Date().dateTimeString)]: \(event)\n")
     }
 
     @IBAction func onClickPlusButton(_ sender: Any) {
