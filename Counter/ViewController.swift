@@ -17,22 +17,32 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var knockButton: UIButton!
     
+    @IBOutlet weak var historyTextView: UITextView!
+    
     private var count: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateCounterValueLabel()
+        
+        historyTextView.text = "История изменений:\n"
     }
     
     private func updateCounterValueLabel() {
         counterValueLabel.text = "Значение счётчика: \(count)"
+    }
+    
+    private func updateHistoryTextView(event: String) {
+        historyTextView.text.append("[дата и время]: \(event)\n")
     }
 
     @IBAction func onClickPlusButton(_ sender: Any) {
         count += 1
         
         updateCounterValueLabel()
+        
+        updateHistoryTextView(event: "значение изменено на +1")
     }
     
     @IBAction func onClickMinusButton(_ sender: Any) {
@@ -40,6 +50,10 @@ class ViewController: UIViewController {
             count -= 1
             
             updateCounterValueLabel()
+            
+            updateHistoryTextView(event: "значение изменено на -1")
+        } else {
+            updateHistoryTextView(event: "попытка уменьшить значение счётчика ниже 0")
         }
     }
     
@@ -47,6 +61,8 @@ class ViewController: UIViewController {
         count = 0
         
         updateCounterValueLabel()
+        
+        updateHistoryTextView(event: "значение сброшено")
     }
 }
 

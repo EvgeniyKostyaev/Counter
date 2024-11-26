@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,9 +64,15 @@
                                 <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system" title="Обнулить"/>
                                 <connections>
                                     <action selector="onClickKnockButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mbi-1c-BvV"/>
-                                    <action selector="onClickMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jr2-HT-euR"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0j-xb-5oL">
+                                <rect key="frame" x="20" y="556" width="353" height="256"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -74,17 +80,22 @@
                             <constraint firstItem="hbP-9Q-crI" firstAttribute="top" secondItem="c8O-iQ-WTD" secondAttribute="bottom" constant="20" id="10c-D5-XPQ"/>
                             <constraint firstAttribute="trailing" secondItem="hbP-9Q-crI" secondAttribute="trailing" constant="20" id="5jq-2D-Z7W"/>
                             <constraint firstItem="bUe-px-B72" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H7h-p0-SGw"/>
+                            <constraint firstAttribute="bottom" secondItem="d0j-xb-5oL" secondAttribute="bottom" constant="40" id="PRn-tf-6od"/>
                             <constraint firstItem="3AD-L6-63h" firstAttribute="trailing" secondItem="c8O-iQ-WTD" secondAttribute="leading" constant="-10" id="UfC-4Q-JXw"/>
+                            <constraint firstItem="d0j-xb-5oL" firstAttribute="top" secondItem="hbP-9Q-crI" secondAttribute="bottom" constant="20" id="Umf-AT-rUy"/>
                             <constraint firstItem="3AD-L6-63h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="VVu-ic-mYm"/>
+                            <constraint firstItem="d0j-xb-5oL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="VeE-aP-bAa"/>
                             <constraint firstItem="3AD-L6-63h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yfw-de-cUK"/>
                             <constraint firstItem="c8O-iQ-WTD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="a7a-xU-1HI"/>
                             <constraint firstItem="hbP-9Q-crI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="mck-Iu-Ndr"/>
+                            <constraint firstAttribute="trailing" secondItem="d0j-xb-5oL" secondAttribute="trailing" constant="20" id="nCw-NQ-Vpe"/>
                             <constraint firstItem="bUe-px-B72" firstAttribute="leading" secondItem="c8O-iQ-WTD" secondAttribute="trailing" constant="10" id="pQ4-XR-wsW"/>
                             <constraint firstAttribute="trailing" secondItem="bUe-px-B72" secondAttribute="trailing" constant="20" id="qQ7-Ow-KkZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="counterValueLabel" destination="c8O-iQ-WTD" id="dTT-Gz-QAr"/>
+                        <outlet property="historyTextView" destination="d0j-xb-5oL" id="7aW-ko-aqq"/>
                         <outlet property="knockButton" destination="hbP-9Q-crI" id="Lr7-Bq-vwf"/>
                         <outlet property="minusButton" destination="3AD-L6-63h" id="AVo-kl-Oku"/>
                         <outlet property="plusButton" destination="bUe-px-B72" id="cbj-QD-fVi"/>
@@ -99,17 +110,20 @@
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
