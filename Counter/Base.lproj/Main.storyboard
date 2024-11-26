@@ -36,7 +36,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                                 <connections>
-                                    <action selector="onClickPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G6W-eY-6ta"/>
+                                    <action selector="didClickPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G6W-eY-6ta"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AD-L6-63h">
@@ -50,7 +50,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
                                 <connections>
-                                    <action selector="onClickMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3l7-b1-dEp"/>
+                                    <action selector="didClickMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3l7-b1-dEp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbP-9Q-crI">
@@ -63,7 +63,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system" title="Обнулить"/>
                                 <connections>
-                                    <action selector="onClickKnockButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mbi-1c-BvV"/>
+                                    <action selector="didClickResetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mbi-1c-BvV"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0j-xb-5oL">
@@ -94,11 +94,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="counterValueLabel" destination="c8O-iQ-WTD" id="dTT-Gz-QAr"/>
+                        <outlet property="countLabel" destination="c8O-iQ-WTD" id="dTT-Gz-QAr"/>
                         <outlet property="historyTextView" destination="d0j-xb-5oL" id="7aW-ko-aqq"/>
-                        <outlet property="knockButton" destination="hbP-9Q-crI" id="Lr7-Bq-vwf"/>
                         <outlet property="minusButton" destination="3AD-L6-63h" id="AVo-kl-Oku"/>
                         <outlet property="plusButton" destination="bUe-px-B72" id="cbj-QD-fVi"/>
+                        <outlet property="resetButton" destination="hbP-9Q-crI" id="Lr7-Bq-vwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

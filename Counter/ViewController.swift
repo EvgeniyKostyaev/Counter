@@ -7,15 +7,30 @@
 
 import UIKit
 
+private enum Constants {
+    static let countLabelPrefix = "Значение счётчика"
+    static let initialHistoryText = "История изменений:\n"
+    static let incrementEvent = "значение изменено на +1"
+    static let decrementEvent = "значение изменено на -1"
+    static let belowZeroEvent = "попытка уменьшить значение счётчика ниже 0"
+    static let resetEvent = "значение сброшено"
+}
+
+private enum CounterEvent {
+    case increment
+    case decrement
+    case reset
+}
+
 class ViewController: UIViewController {
     
-    @IBOutlet weak var counterValueLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
     
     @IBOutlet weak var plusButton: UIButton!
     
     @IBOutlet weak var minusButton: UIButton!
     
-    @IBOutlet weak var knockButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     @IBOutlet weak var historyTextView: UITextView!
     
@@ -24,45 +39,49 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateCounterValueLabel()
+        updateCountLabel()
         
-        historyTextView.text = "История изменений:\n"
+        historyTextView.text = Constants.initialHistoryText
     }
     
-    private func updateCounterValueLabel() {
-        counterValueLabel.text = "Значение счётчика: \(count)"
+    private func handleCounterEvent(event: CounterEvent) {
+        switch event {
+        case .increment:
+            count += 1
+            updateHistoryTextView(event: Constants.incrementEvent)
+        case .decrement:
+            if (count > 0) {
+                count -= 1
+                updateHistoryTextView(event: Constants.decrementEvent)
+            } else {
+                updateHistoryTextView(event: Constants.belowZeroEvent)
+            }
+        case .reset:
+            count = 0
+            updateHistoryTextView(event: Constants.resetEvent)
+        }
+        
+        updateCountLabel()
+    }
+    
+    private func updateCountLabel() {
+        countLabel.text = "\(Constants.countLabelPrefix): \(count)"
     }
     
     private func updateHistoryTextView(event: String) {
         historyTextView.text.append("[\(Date().dateTimeString)]: \(event)\n")
     }
 
-    @IBAction func onClickPlusButton(_ sender: Any) {
-        count += 1
-        
-        updateCounterValueLabel()
-        
-        updateHistoryTextView(event: "значение изменено на +1")
+    @IBAction func didClickPlusButton(_ sender: Any) {
+        handleCounterEvent(event: .increment)
     }
     
-    @IBAction func onClickMinusButton(_ sender: Any) {
-        if (count > 0) {
-            count -= 1
-            
-            updateCounterValueLabel()
-            
-            updateHistoryTextView(event: "значение изменено на -1")
-        } else {
-            updateHistoryTextView(event: "попытка уменьшить значение счётчика ниже 0")
-        }
+    @IBAction func didClickMinusButton(_ sender: Any) {
+        handleCounterEvent(event: .decrement)
     }
     
-    @IBAction func onClickKnockButton(_ sender: Any) {
-        count = 0
-        
-        updateCounterValueLabel()
-        
-        updateHistoryTextView(event: "значение сброшено")
+    @IBAction func didClickResetButton(_ sender: Any) {
+        handleCounterEvent(event: .reset)
     }
 }
 
