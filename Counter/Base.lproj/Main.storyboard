@@ -17,41 +17,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8O-iQ-WTD">
-                                <rect key="frame" x="20" y="404" width="353" height="44"/>
+                                <rect key="frame" x="90" y="396" width="213" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="5bO-EW-7nv"/>
+                                    <constraint firstAttribute="height" constant="60" id="5bO-EW-7nv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUe-px-B72">
-                                <rect key="frame" x="166.66666666666666" y="468" width="60" height="60"/>
+                                <rect key="frame" x="313" y="396" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="A3n-mG-JUX"/>
                                     <constraint firstAttribute="height" constant="60" id="Kzg-fw-oid"/>
                                 </constraints>
-                                <color key="tintColor" red="0.1215686275" green="0.8980392157" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                                 <connections>
                                     <action selector="onClickPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G6W-eY-6ta"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AD-L6-63h">
+                                <rect key="frame" x="20" y="396" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="mro-ih-5qH"/>
+                                    <constraint firstAttribute="width" constant="60" id="yQ0-ms-5vt"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
+                                <connections>
+                                    <action selector="onClickMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3l7-b1-dEp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bUe-px-B72" firstAttribute="top" secondItem="c8O-iQ-WTD" secondAttribute="bottom" constant="20" id="AoJ-Lx-9UU"/>
-                            <constraint firstItem="c8O-iQ-WTD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="K7M-Pe-d2p"/>
-                            <constraint firstItem="bUe-px-B72" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U2E-6f-UW2"/>
+                            <constraint firstItem="bUe-px-B72" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H7h-p0-SGw"/>
+                            <constraint firstItem="3AD-L6-63h" firstAttribute="trailing" secondItem="c8O-iQ-WTD" secondAttribute="leading" constant="-10" id="UfC-4Q-JXw"/>
+                            <constraint firstItem="3AD-L6-63h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="VVu-ic-mYm"/>
+                            <constraint firstItem="3AD-L6-63h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yfw-de-cUK"/>
                             <constraint firstItem="c8O-iQ-WTD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="a7a-xU-1HI"/>
-                            <constraint firstAttribute="trailing" secondItem="c8O-iQ-WTD" secondAttribute="trailing" constant="20" id="fho-ep-XRv"/>
+                            <constraint firstItem="bUe-px-B72" firstAttribute="leading" secondItem="c8O-iQ-WTD" secondAttribute="trailing" constant="10" id="pQ4-XR-wsW"/>
+                            <constraint firstAttribute="trailing" secondItem="bUe-px-B72" secondAttribute="trailing" constant="20" id="qQ7-Ow-KkZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="counterValueLabel" destination="c8O-iQ-WTD" id="dTT-Gz-QAr"/>
+                        <outlet property="minusButton" destination="3AD-L6-63h" id="AVo-kl-Oku"/>
                         <outlet property="plusButton" destination="bUe-px-B72" id="cbj-QD-fVi"/>
                     </connections>
                 </viewController>
@@ -61,12 +78,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="minus" catalog="system" width="128" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

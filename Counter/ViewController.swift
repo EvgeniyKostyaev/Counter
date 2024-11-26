@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var plusButton: UIButton!
     
+    @IBOutlet weak var minusButton: UIButton!
+    
     private var count: Int = 0
     
     override func viewDidLoad() {
@@ -29,6 +31,14 @@ class ViewController: UIViewController {
         count += 1
         
         updateCounterValueLabel()
+    }
+    
+    @IBAction func onClickMinusButton(_ sender: Any) {
+        if (count > 0) {
+            count -= 1
+            
+            updateCounterValueLabel()
+        }
     }
 }
 
