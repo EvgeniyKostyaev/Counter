@@ -22,17 +22,17 @@ private enum CounterEvent {
     case reset
 }
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
     
-    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet private weak var plusButton: UIButton!
     
-    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet private weak var minusButton: UIButton!
     
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet private weak var resetButton: UIButton!
     
-    @IBOutlet weak var historyTextView: UITextView!
+    @IBOutlet private weak var historyTextView: UITextView!
     
     private var count: Int = 0
     
@@ -72,15 +72,15 @@ class ViewController: UIViewController {
         historyTextView.text.append("[\(Date().dateTimeString)]: \(event)\n")
     }
 
-    @IBAction func didClickPlusButton(_ sender: Any) {
+    @IBAction private func didClickPlusButton(_ sender: Any) {
         handleCounterEvent(event: .increment)
     }
     
-    @IBAction func didClickMinusButton(_ sender: Any) {
+    @IBAction private func didClickMinusButton(_ sender: Any) {
         handleCounterEvent(event: .decrement)
     }
     
-    @IBAction func didClickResetButton(_ sender: Any) {
+    @IBAction private func didClickResetButton(_ sender: Any) {
         handleCounterEvent(event: .reset)
     }
 }
