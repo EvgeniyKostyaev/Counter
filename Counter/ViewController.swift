@@ -36,40 +36,67 @@ final class ViewController: UIViewController {
     
     private var count: Int = 0
     
+    private var events: String = String()
+    
+    private let countKey = "CountKey"
+    private let eventsKey = "EventsKey"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        count = getCountFromStorage()
         updateCountLabel()
         
-        historyTextView.text = Constants.initialHistoryText
+        events = getHistoryFromStorage() ?? Constants.initialHistoryText
+        updateHistoryTextView()
     }
     
     private func handleCounterEvent(event: CounterEvent) {
         switch event {
         case .increment:
             count += 1
-            updateHistoryTextView(event: Constants.incrementEvent)
+            events.append("[\(Date().dateTimeString)]: \(Constants.incrementEvent)\n")
         case .decrement:
             if (count > 0) {
                 count -= 1
-                updateHistoryTextView(event: Constants.decrementEvent)
+                events.append("[\(Date().dateTimeString)]: \(Constants.decrementEvent)\n")
             } else {
-                updateHistoryTextView(event: Constants.belowZeroEvent)
+                events.append("[\(Date().dateTimeString)]: \(Constants.belowZeroEvent)\n")
             }
         case .reset:
             count = 0
-            updateHistoryTextView(event: Constants.resetEvent)
+            events.append("[\(Date().dateTimeString)]: \(Constants.resetEvent)\n")
         }
         
+        saveCountInStorage(count)
         updateCountLabel()
+        
+        saveHistoryInStorage(events)
+        updateHistoryTextView()
     }
     
     private func updateCountLabel() {
         countLabel.text = "\(Constants.countLabelPrefix): \(count)"
     }
     
-    private func updateHistoryTextView(event: String) {
-        historyTextView.text.append("[\(Date().dateTimeString)]: \(event)\n")
+    private func updateHistoryTextView() {
+        historyTextView.text = events
+    }
+    
+    private func saveCountInStorage(_ count: Int) {
+        UserDefaults.standard.set(count, forKey: countKey)
+    }
+    
+    private func getCountFromStorage() -> Int {
+        return UserDefaults.standard.integer(forKey: countKey)
+    }
+    
+    private func saveHistoryInStorage(_ events: String) {
+        UserDefaults.standard.set(events, forKey: eventsKey)
+    }
+    
+    private func getHistoryFromStorage() -> String? {
+        return UserDefaults.standard.string(forKey: eventsKey)
     }
 
     @IBAction private func didClickPlusButton(_ sender: Any) {
